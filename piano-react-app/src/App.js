@@ -2,6 +2,7 @@ import './App.css';
 import {useState, useEffect} from'react'
 import axios from 'axios'
 import Fuse from 'fuse.js'
+import Edit from './components/Edit'
 
 function App() {
    const [pianos, setPianos] = useState([])
