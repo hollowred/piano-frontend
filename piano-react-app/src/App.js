@@ -3,6 +3,8 @@ import {useState, useEffect} from'react'
 import axios from 'axios'
 import Fuse from 'fuse.js'
 import Edit from './components/Edit'
+import NavBar from './components/NavBar'
+import Delete from './components/Delete'
 
 function App() {
    const [pianos, setPianos] = useState([])
@@ -57,7 +59,7 @@ function App() {
   // id updates ID in DB, editAnimal brings the info from that function
     .put(APIBaseURL + '/' + editPiano.id, editPiano)
     .then((response) => {
-      setPianos(animals.map((piano) => {
+      setPianos(pianos.map((piano) => {
         return piano.id !== response.data.id ? piano : response.data
       }))
       // getPianos()
@@ -74,6 +76,12 @@ function App() {
       getPianos()
   })
 }
+
+return (
+  <>
+    <h1 className="title">Piano Store</h1>
+  </>
+  )
 }
 
 export default App;
