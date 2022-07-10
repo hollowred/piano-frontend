@@ -45,12 +45,7 @@ const NavBar = (props) => {
 
                 </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" role='button' onClick={() => {props.conservationPage(props)}}>Conservation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" role='button' onClick={() => {props.sourcePage(props)}}>Sources</a>
-                </li>
+
                 <li class="nav-item">
                 <a class="nav-link disabled">© 2022</a>
                 </li>

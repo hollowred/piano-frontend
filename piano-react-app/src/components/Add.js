@@ -34,7 +34,7 @@ const Add = (props) => {
                     <label htmlFor="price">Price: </label><br/>
                     <input type="number" name="price" value={piano.price}
                     onChange={handleChange}/>
-                    <  <input type="submit"/>
+                     <input type="submit"/>
                 </form>
             </details>
         </>

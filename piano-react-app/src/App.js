@@ -2,6 +2,7 @@ import './App.css';
 import {useState, useEffect} from'react'
 import axios from 'axios'
 import Fuse from 'fuse.js'
+import Add from './components/Add'
 import Edit from './components/Edit'
 import NavBar from './components/NavBar'
 import Delete from './components/Delete'
@@ -77,11 +78,57 @@ function App() {
   })
 }
 
-return (
-  <>
-    <h1 className="title">Piano Store</h1>
-  </>
-  )
-}
+  const DisplayAllPianos = () => {
+    return (
+      <>
+        <div className='piano' key={pianos.id}>
+             <table className="main-table">
+               <tr className="main-tr">
+                 <th className="main-th">Name</th>
+                 <th className="main-th">{pianos.name}</th>
+               </tr>
+               <tr className="main-tr">
+                 <th className="main-th">price</th>
+                 <th className="main-th">{pianos.price}</th>
+               </tr>
+             </table>
+               <img className="show-page-images" src={pianos.image} alt={pianos.name}></img>
+         </div>
+      </>
+      )
+    }
+    const homePage = () => {
+      getPianos()
+      setShowPianos(true)
+      setShowPiano(false)
+    }
 
+    const showPage = (selectedPiano) => {
+      setShowPiano(true)
+      setShowPianos(false)
+      setPianos(pianos.filter(piano => piano.id == selectedPiano.id))
+    }
+    useEffect(() => {
+    getPianos()
+    setShowPianos(true)
+    setShowPiano(false)
+
+  }, [])
+
+  return (
+   <>
+     <h1 id='title'>Pianers These Be</h1>
+     <NavBar
+       handleCreate={handleCreate}
+       homePage={homePage}
+       query={query}
+       handleOnSearch={handleOnSearch}
+
+     />
+
+     {showPianos ? <DisplayAllPianos/> : null}
+
+   </>
+ )
+}
 export default App;
